@@ -6,7 +6,7 @@ var geoip = require('geoip-lite');
 const app = express();
 
 
-mongoose.connect('mongodb://localhost/testingUrlShortner', {
+mongoose.connect('mongodb+srv://root:123@urlshortner.ygglf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 });
@@ -93,7 +93,7 @@ app.get('/:shortUrl', async (req, res) => {
 	shortUrl.clicks++;
 	shortUrl.save();
 	res.redirect(shortUrl.full);
-	res.redirect("back");
+	res.redirect("back");	
 });
 
 app.listen(process.env.PORT || 5000);
