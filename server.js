@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const shortUrl = require('./models/shortUrl');
+
 const ShortUrl = require('./models/shortUrl');
 var geoip = require('geoip-lite');
 const app = express();
@@ -44,8 +44,8 @@ app.get('/', async (req, res) => {
 		backgroundcolor.push(randomColor[rndIndx]);
 
 	});
-	console.log(labels);
-	console.log(data);
+	// console.log(labels);
+	// console.log(data);
 
 	res.render('index', {
 		shortUrls: shortUrls,
@@ -57,18 +57,11 @@ app.get('/', async (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
 
-	console.log('Headers: ' + JSON.stringify(req.headers));
-	console.log('IP: ' + JSON.stringify(req.ip));
-
-	const isAvailable = await ShortUrl.findOne({
-		short: req.params.shortUrl
-	});
-
+	// console.log('Headers: ' + JSON.stringify(req.headers));
+	// console.log('IP: ' + JSON.stringify(req.ip));
 	//getting region of request
 
 	var geo = geoip.lookup(req.ip);
-
-
 	var country = (geo ? geo.country : "Location not detected");
 
 	await ShortUrl.create({
