@@ -1,4 +1,4 @@
 
 
 
-(demo link)[https://shortitfy.herokuapp.com/]
+[demo link](https://shortitfy.herokuapp.com/)
